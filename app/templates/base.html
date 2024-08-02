@@ -7,18 +7,18 @@
     <title>{% block title %}My Blog{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        @font-face {
-            font-family: 'linux';
-            src: url("{% static 'fonts/Ubuntu-Regular.ttf' %}") format('truetype');
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body class="flex justify-center items-center linux bg-color6 text-color7">
+    <div class="container">
         {% include 'includes/header.html' %}
         {% block content %}{% endblock %}
         {% include 'includes/footer.html' %}
+    </div>
     <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 

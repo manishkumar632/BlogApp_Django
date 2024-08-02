@@ -1,4 +1,43 @@
 {% load static %}
-<header>
-    <h1>Hello</h1>
-</header>
+<div class="grid">
+    <div class="flex">
+        <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
+            <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
+            <h1><span class="lg:text-5xl text-3xl gradient-text">M</span>Blog</h1>
+        </div>
+        <div class="hidden ml-auto md:grid self-center text-xl lg:text-2xl">
+            <div class="flex gap-6">
+                <a href="/">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Home
+                    </h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Services</h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        About</h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Contact</h1>
+                </a>
+                <a href="/login">
+                    <h1
+                        class="hover:text-[orange] cursor-pointer hover:bg-white hover:font-bold transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Login
+                    </h1>
+                </a>
+            </div>
+        </div>
+        <div class="grid ml-auto pr-4 md:hidden self-center justify-items-end text-3xl">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+</div>
