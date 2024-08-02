@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        @font-face {
+            font-family: 'linux';
+            src: url("{% static 'fonts/Ubuntu-Regular.ttf' %}") format('truetype');
+        }
+    </style>
+</head>
+
+<body>
+        {% include 'includes/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'includes/footer.html' %}
+    <script src="{% static 'javascript/script.js' %}"></script>
+</body>
+
+</html>
