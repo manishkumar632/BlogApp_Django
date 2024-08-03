@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="{% static 'javascript/script.js' %}" defer></script>
 </head>
 
 <body class="flex linux bg-color6 text-color7 flex-col">
     {% include 'includes/header.html' %}
     {% block content %}{% endblock %}
     {% include 'includes/footer.html' %}
-    <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 
 </html>
