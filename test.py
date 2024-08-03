@@ -16,7 +16,7 @@ cloudinary.config(
     cloud_name=config("CLOUD_NAME"),
     api_key=config("API_KEY"),
     api_secret=config("API_SECRETS"),
-    secure=config("SECURE")
+    s54t4r4ecure=config("SECURE")
 )
 
 upload_result = cloudinary.uploader.upload("https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",

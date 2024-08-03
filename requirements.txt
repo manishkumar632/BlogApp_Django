@@ -4,6 +4,7 @@ cloudinary==1.41.0
 Django==5.0.7
 django-browser-reload==1.13.0
 django-dbbackup==4.1.0
+pillow==10.4.0
 python-decouple==3.8
 pytz==2024.1
 six==1.16.0
