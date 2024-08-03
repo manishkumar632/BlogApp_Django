@@ -13,12 +13,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body class="flex justify-center items-center linux bg-color6 text-color7">
-    <div class="container">
-        {% include 'includes/header.html' %}
-        {% block content %}{% endblock %}
-        {% include 'includes/footer.html' %}
-    </div>
+<body class="flex linux bg-color6 text-color7 flex-col">
+    {% include 'includes/header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'includes/footer.html' %}
     <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 

@@ -1,5 +1,5 @@
 {% load static %}
-<div class="grid">
+<div class="container">
     <div class="flex">
         <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
             <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
@@ -41,3 +41,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        document.body.classList.toggle("h-screen");
+    })
+</script>
