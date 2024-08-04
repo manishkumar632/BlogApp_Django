@@ -1,7 +1,66 @@
 {% extends 'base.html' %}
 {% block title %}Sign Up{% endblock %}
 {% block content %}
-<div>
-    <h1 class="text-4xl">Sign Up</h1>
+<div class="flex-1 flex flex-col items-center justify-center">
+    <div class="bg-color6 p-8 rounded shadow-lg glass">
+        <h2 class="text-2xl mb-4 text-center">Sign Up</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
+                    Username
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="username" name="username" type="text" placeholder="Username">
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
+                    Email
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="email" name="email" type="text" placeholder="Email ID">
+            </div>
+            <div class="mb-6">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
+                    Password
+                </label>
+                <div class="flex justify-center items-center w-max rounded bg-white">
+                    <input
+                        class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="password" name="password" type="password" placeholder="Enter Your Password">
+                    <div class="text-black text-2xl flex justify-center items-center border-none mr-2"
+                        onclick="toggleIcon()"><i class='bx bx-show-alt'></i></div>
+                    <div class="hidden flex text-black text-2xl justify-center items-center border-none mr-2"
+                        onclick="toggleIcon()"><i class='bx bxs-hide'></i></div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center"
+                    type="submit">
+                    Sign Up
+                </button>
+            </div>
+            <div class="flex items-center justify-center mt-4">
+                <p>Already have account? <span class="text-[orange]"><a href="/login">Login</a></span></p>
+            </div>
+        </form>
+    </div>
 </div>
+
+
+<script>
+    function toggleIcon() {
+        const passwordField = document.getElementById('password');
+        const showPassword = document.body.querySelector(`.bx-show-alt`).parentElement;
+        const hidePassword = document.body.querySelector(`.bxs-hide`).parentElement;
+        showPassword.classList.toggle('hidden');
+        hidePassword.classList.toggle('hidden');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+    }
+</script>
 {% endblock %}
