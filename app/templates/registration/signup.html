@@ -4,6 +4,9 @@
 <div class="flex-1 flex flex-col items-center justify-center">
     <div class="bg-color6 p-8 rounded shadow-lg glass">
         <h2 class="text-2xl mb-4 text-center">Sign Up</h2>
+        {% if error %}
+        <p id="error-message" style="color: red;">{{ error }}</p>
+        {% endif %}
         <form action="" method="POST">
             {% csrf_token %}
             <div class="mb-4">
@@ -12,7 +15,7 @@
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="username" name="username" type="text" placeholder="Username">
+                    id="username" name="username" type="text" placeholder="Username" value="{{ request.POST.username|default:'' }}">
             </div>
             <div class="mb-4">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
@@ -20,7 +23,7 @@
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" name="email" type="text" placeholder="Email ID">
+                    id="email" name="email" type="text" placeholder="Email ID" value="{{ request.POST.email|default:'' }}">
             </div>
             <div class="mb-6">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
@@ -29,7 +32,7 @@
                 <div class="flex justify-center items-center w-max rounded bg-white">
                     <input
                         class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="password" name="password" type="password" placeholder="Enter Your Password">
+                        id="password" name="password" type="password" placeholder="Enter Your Password" value="{{ request.POST.password|default:'' }}">
                     <div class="text-black text-2xl flex justify-center items-center border-none mr-2"
                         onclick="toggleIcon()"><i class='bx bx-show-alt'></i></div>
                     <div class="hidden flex text-black text-2xl justify-center items-center border-none mr-2"
@@ -60,7 +63,19 @@
         hidePassword.classList.toggle('hidden');
         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', type);
-
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+            const errorMessage = document.getElementById('error-message');
+            const inputFields = document.querySelectorAll('input');
+
+            inputFields.forEach(field => {
+                field.addEventListener('focus', function () {
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                });
+            });
+        });
 </script>
 {% endblock %}

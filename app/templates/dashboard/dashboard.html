@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ request.user.username }} Dashboard{% endblock %}
+{% block content %}
+<div>
+    {% if request.user.is_authenticated %}
+    <h1 class="text-3xl text-yellow-400">Hey! {{ request.user.username }},Explore your Dashboard.</h1>
+    <h1 class="text-3xl text-green-400">Have a nice day.</h1>
+    {% endif %}
+</div>
+{% endblock %}
