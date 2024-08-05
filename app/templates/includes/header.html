@@ -1,53 +1,52 @@
 {% load static %}
-<div class="container relative">
-    <div class="flex">
-        <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
-            <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
-            <h1><span class="lg:text-5xl text-3xl gradient-text">M</span>Blog</h1>
-        </div>
-        <div class="hidden ml-auto md:grid self-center text-xl lg:text-2xl">
-            <div class="flex gap-6">
-                <a href="/">
-                    <h1
-                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                        Home
-                    </h1>
-                </a>
-                <a href="">
-                    <h1
-                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                        Services</h1>
-                </a>
-                <a href="">
-                    <h1
-                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                        About</h1>
-                </a>
-                <a href="">
-                    <h1
-                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                        Contact</h1>
-                </a>
-                {% if request.user.is_authenticated %}
-                <div class="flex justify-center items-center" onclick="showMenu()">
-                    <i class='bx bxs-user'></i>
-                </div>
-                {% else %}
-                <a href="/login">
-                    <h1
-                        class="hover:text-[orange] cursor-pointer hover:bg-white hover:font-bold transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                        Login
-                    </h1>
-                </a>
-                {% endif %}
+<div class="flex relative">
+    <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
+        <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
+        <h1><span class="lg:text-5xl text-3xl gradient-text">M</span>Blog</h1>
+    </div>
+    <div class="hidden ml-auto md:grid self-center text-xl lg:text-2xl">
+        <div class="flex gap-6">
+            <a href="/">
+                <h1
+                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                    Home
+                </h1>
+            </a>
+            <a href="">
+                <h1
+                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                    Services</h1>
+            </a>
+            <a href="">
+                <h1
+                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                    About</h1>
+            </a>
+            <a href="">
+                <h1
+                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                    Contact</h1>
+            </a>
+            {% if request.user.is_authenticated %}
+            <div class="flex justify-center items-center text-[2rem]">
+                <i class='bx bxs-user'></i>
             </div>
-        </div>
-        <div class="grid ml-auto pr-4 md:hidden self-center justify-items-end text-3xl">
-            <i class='bx bx-menu'></i>
+            {% else %}
+            <a href="/login">
+                <h1
+                    class="hover:text-[orange] cursor-pointer hover:bg-white hover:font-bold transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                    Login
+                </h1>
+            </a>
+            {% endif %}
         </div>
     </div>
+    <div class="grid ml-auto pr-4 md:hidden self-center justify-items-end text-3xl">
+        <i class='bx bx-menu'></i>
+    </div>
+
     {% if request.user.is_authenticated %}
-    <div id="menu" class="2xl:mr-10 hidden glass absolute right-0 p-4 shadow-md rounded-md w-max">
+    <div id="menu" class="mt-16 hidden glass absolute right-0 p-4 shadow-md rounded-md w-max">
         <div class="flex flex-col gap-4">
             <a href="{% url 'dashboard' username=request.user.username %}">
                 <div class="flex gap-4 items-center">
@@ -76,8 +75,13 @@
     document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle("h-screen");
     })
-    function showMenu() {
-        const menu = document.getElementById('menu');
-        menu.classList.toggle('hidden');
-    }
+    document.body.addEventListener('click', function (event) {
+        const element = (event.target).classList.contains("bxs-user");
+        if (element) {
+            document.getElementById('menu').classList.toggle('hidden');
+        }
+        else if(!element && !(event.target).querySelector(`#menu`)) {
+            document.getElementById('menu').classList.add('hidden');
+        }
+    })
 </script>

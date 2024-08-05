@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +15,14 @@
     <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.svg' %}">
 </head>
 
-<body class="flex linux bg-color6 text-color7 flex-col">
-    {% include 'includes/header.html' %}
-    {% block content %}{% endblock %}
-    {% include 'includes/footer.html' %}
+<body class="flex items-center linux bg-color6 text-color7 flex-col">
+    <div class="container">
+        <div class="container">
+            {% include 'includes/header.html' %}
+            {% block content %}{% endblock %}
+            {% include 'includes/footer.html' %}
+        </div>
+    </div>
 </body>
 
 </html>
