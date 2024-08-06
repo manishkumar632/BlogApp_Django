@@ -15,14 +15,13 @@
     <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.svg' %}">
 </head>
 
-<body class="flex items-center linux bg-color6 text-color7 flex-col">
-    <div class="container">
-        <div class="container">
-            {% include 'includes/header.html' %}
-            {% block content %}{% endblock %}
-            {% include 'includes/footer.html' %}
-        </div>
+<body class="flex justify-center linux bg-color6 text-color7">
+    <div class="container flex flex-col h-screen">
+        {% include 'includes/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'includes/footer.html' %}
     </div>
+    <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 
 </html>
