@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div>
+    {% if request.user.is_authenticated %}
+    <h1 class="text-4xl text-white bg-green-400 p-10">Hello {{ request.user.username }}</h1>
+    {% else %}
+    <h1 class="welcome">Hello Guest</h1>
+    {% endif %}
+</div>
+{% endblock %}
