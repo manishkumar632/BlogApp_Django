@@ -4,13 +4,19 @@
 	"description": "",
 	"main": "tailwind.config.js",
 	"scripts": {
-		"build": "npx tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/style.css",
+		"build": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/style.css",
 		"dev": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/style.css --watch"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@tailwindcss/forms": "^0.5.7",
+		"@tailwindcss/line-clamp": "^0.4.4",
+		"@tailwindcss/typography": "^0.5.13",
+		"autoprefixer": "^10.4.20",
+		"postcss": "^8.4.41",
 		"tailwindcss": "^3.4.7"
 	},
 	"dependencies": {
@@ -71,7 +77,6 @@
 		"picomatch": "^2.3.1",
 		"pify": "^2.3.0",
 		"pirates": "^4.0.6",
-		"postcss": "^8.4.40",
 		"postcss-import": "^15.1.0",
 		"postcss-js": "^4.0.1",
 		"postcss-load-config": "^4.0.2",

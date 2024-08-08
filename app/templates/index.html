@@ -3,9 +3,9 @@
 {% block content %}
 <div>
     {% if request.user.is_authenticated %}
-    <h1 class="text-4xl text-white bg-green-400 p-10">Hello {{ request.user.username }}</h1>
+    <h1 class="text-4xl text-color3 bg-gray-700">Hey! {{ request.user.username }}</h1>
     {% else %}
-    <h1 class="welcome">Hello Guest</h1>
+    <h1 class="text-5xl bg-stone-200 text-orange-500">Hello Guest</h1>
     {% endif %}
 </div>
 {% endblock %}
