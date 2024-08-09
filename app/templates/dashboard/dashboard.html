@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 {% block title %}{{ request.user.username }} Dashboard{% endblock %}
 {% block content %}
-<div>
-    {% if request.user.is_authenticated %}
-    <h1 class="text-3xl text-yellow-400">Hey! {{ request.user.username }},Explore your Dashboard.</h1>
-    <h1 class="text-3xl text-green-400">Have a nice day.</h1>
-    {% endif %}
+<div class="flex flex-col text-gray-500 mt-4">
+    <div class="grid grid-cols-2 md:grid-cols-3">
+        <div class="flex items-center bg-white w-max rounded-md shadow-md">
+            <input type="text" placeholder="Search anything..." class="border-none outline-none p-2 rounded-md">
+            <i class='bx bx-search text-xl mr-2'></i>
+        </div>
+        <div class="hidden justify-center items-center gap-2 md:flex">
+            <i class='bx bx-calendar text-xl'></i>
+            <p>Today</p>
+            <p id="today-date" class="text-black font-bold"></p>
+        </div>
+        <div class="flex items-center">
+            <div class="w-max ml-auto flex items-center gap-2">
+                <i class='bx bx-bell text-xl'></i>
+                <i class='bx bx-user-circle text-3xl'></i>
+                <i class='bx bxs-chevron-down text-xl'></i>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8">
+        <h1 class="text-3xl">Welcome Back!👋</h1>
+        <h1>Good Evening!</h1>
+    </div>
 </div>
 {% endblock %}

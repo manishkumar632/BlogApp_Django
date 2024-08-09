@@ -13,6 +13,8 @@ def signup(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         username = request.POST.get('username')
+        gender = request.POST.get('gender')
+        print(f'Email: {email}, Password: {password}, Username: {username}, Gender: {gender}')
         if User.objects.filter(email=email).exists():
             error_message = 'Email already exists'
             return render(request, 'registration/signup.html', {'error': error_message})
@@ -20,7 +22,7 @@ def signup(request):
             error_message = 'Username already exists'
             return render(request, 'registration/signup.html', {'error': error_message})
         else:
-            user = User.objects.create_user(email=email, password=password, username=username)
+            user = User.objects.create_user(email=email, password=password, username=username, gender=gender)
             user.save()
             auth_login(request, user)
             return redirect('/')

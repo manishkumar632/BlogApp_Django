@@ -5,7 +5,7 @@
     {% if request.user.is_authenticated %}
     <h1 class="text-4xl text-color3 bg-gray-700">Hey! {{ request.user.username }}</h1>
     {% else %}
-    <h1 class="font-3xl text-white">Hello Guest</h1>
+    <h1 class="text-4xl bg-indigo-300">Welcome</h1>
     {% endif %}
 </div>
 {% endblock %}

@@ -10,6 +10,16 @@ document.body.addEventListener("click", function (event) {
 });
 
 // call after login page loaded
+
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM fully loaded and parsed");
+	if (window.location.pathname.includes("/dashboard/")) {
+		document.body.querySelector("header").style.display = "none";
+		document.body.style.backgroundColor = "#F7F8FA";
+		const todayDate = document.getElementById("today-date");
+		todayDate.textContent = new Date().toLocaleDateString("en-US", {
+			month: "long",
+			day: "numeric",
+			year: "numeric",
+		});
+	}
 });

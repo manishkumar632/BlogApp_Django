@@ -1,72 +1,74 @@
 {% load static %}
-<div class="flex relative h-max">
-    <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
-        <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
-        <h1><span class="lg:text-5xl text-3xl gradient-text">M</span>Blog</h1>
-    </div>
-    <div class="hidden ml-auto md:grid self-center text-xl lg:text-2xl">
-        <div class="flex gap-6">
-            <a href="/">
-                <h1
-                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                    Home
-                </h1>
-            </a>
-            <a href="">
-                <h1
-                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                    Services</h1>
-            </a>
-            <a href="">
-                <h1
-                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                    About</h1>
-            </a>
-            <a href="">
-                <h1
-                    class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                    Contact</h1>
-            </a>
-            {% if request.user.is_authenticated %}
-            <div class="flex justify-center items-center text-[2rem]">
-                <i class='bx bxs-user'></i>
+<header>
+    <div class="flex relative h-max">
+        <div class="grid grid-cols-2 w-max place-items-center lg:text-3xl text-2xl font-bold">
+            <img class="w-16 lg:w-24" src="{% static 'assets/logo.svg' %}" alt="logo">
+            <h1><span class="lg:text-5xl text-3xl gradient-text">M</span>Blog</h1>
+        </div>
+        <div class="hidden ml-auto md:grid self-center text-xl lg:text-2xl">
+            <div class="flex gap-6">
+                <a href="/">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Home
+                    </h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Services</h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        About</h1>
+                </a>
+                <a href="">
+                    <h1
+                        class="hover:text-white cursor-pointer hover:bg-color5 transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Contact</h1>
+                </a>
+                {% if request.user.is_authenticated %}
+                <div class="flex justify-center items-center text-[2rem]">
+                    <i class='bx bxs-user'></i>
+                </div>
+                {% else %}
+                <a href="/login">
+                    <h1
+                        class="hover:text-[orange] cursor-pointer hover:bg-white hover:font-bold transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
+                        Login
+                    </h1>
+                </a>
+                {% endif %}
             </div>
-            {% else %}
-            <a href="/login">
-                <h1
-                    class="hover:text-[orange] cursor-pointer hover:bg-white hover:font-bold transition-all duration-300 hover:pl-2 hover:pr-2 rounded-md">
-                    Login
-                </h1>
-            </a>
-            {% endif %}
         </div>
-    </div>
-    <div class="grid ml-auto pr-4 md:hidden self-center justify-items-end text-3xl">
-        <i class='bx bx-menu'></i>
-    </div>
+        <div class="grid ml-auto pr-4 md:hidden self-center justify-items-end text-3xl">
+            <i class='bx bx-menu'></i>
+        </div>
 
-    {% if request.user.is_authenticated %}
-    <div id="menu" class="mt-16 hidden glass absolute right-0 p-4 shadow-md rounded-md w-max">
-        <div class="flex flex-col gap-4">
-            <a href="{% url 'dashboard' username=request.user.username %}">
-                <div class="flex gap-4 items-center">
-                    <h1 class="cursor-pointer transition-all duration-300">Dashboard</h1>
-                    <div class="w-max ml-auto flex items-center"><i class='bx bxs-dashboard'></i></i></div>
-                </div>
-            </a>
-            <a href="">
-                <div class="flex gap-4 items-center">
-                    <h1 class="cursor-pointer transition-all duration-300">Setting</h1>
-                    <div class="w-max ml-auto flex items-center"><i class='bx bx-cog'></i></div>
-                </div>
-            </a>
-            <a href="/logout">
-                <div class="flex gap-4 items-center">
-                    <h1 class="cursor-pointer transition-all duration-300">Logout</h1>
-                    <div class="w-max ml-auto flex items-center"><i class='bx bx-log-out-circle'></i></div>
-                </div>
-            </a>
+        {% if request.user.is_authenticated %}
+        <div id="menu" class="mt-16 hidden glass absolute right-0 p-4 shadow-md rounded-md w-max">
+            <div class="flex flex-col gap-4">
+                <a href="{% url 'dashboard' username=request.user.username %}">
+                    <div class="flex gap-4 items-center">
+                        <h1 class="cursor-pointer transition-all duration-300">Dashboard</h1>
+                        <div class="w-max ml-auto flex items-center"><i class='bx bxs-dashboard'></i></i></div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="flex gap-4 items-center">
+                        <h1 class="cursor-pointer transition-all duration-300">Setting</h1>
+                        <div class="w-max ml-auto flex items-center"><i class='bx bx-cog'></i></div>
+                    </div>
+                </a>
+                <a href="/logout">
+                    <div class="flex gap-4 items-center">
+                        <h1 class="cursor-pointer transition-all duration-300">Logout</h1>
+                        <div class="w-max ml-auto flex items-center"><i class='bx bx-log-out-circle'></i></div>
+                    </div>
+                </a>
+            </div>
         </div>
+        {% endif %}
     </div>
-    {% endif %}
-</div>
+</header>
