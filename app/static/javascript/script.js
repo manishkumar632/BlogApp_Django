@@ -26,8 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function loginDivHeight() {
 	const header = document.querySelector("header");
-	let loginDivHeight = window.innerHeight - header.clientHeight - 4;
-	document.getElementById("login-signup").style.height = `${loginDivHeight}px`;
+	let loginDivHeight = window.innerHeight - header.clientHeight -1;
+	if (
+		window.location.pathname.includes("/login") ||
+		window.location.pathname.includes("/signup")
+	) {
+		document.getElementById(
+			"login-signup"
+		).style.height = `${loginDivHeight}px`;
+	}
+	if (window.location.pathname.includes("/create-post/")) {
+		document.getElementById(
+			"createPost"
+		).style.height = `${loginDivHeight}px`;
+	}
 }
 
 function observeBodyContentChanges(callback) {
@@ -53,13 +65,11 @@ function observeBodyContentChanges(callback) {
 }
 
 function onBodyContentChange(mutation) {
-	if (window.location.pathname.includes("/login") || window.location.pathname.includes("/signup")) {
 		loginDivHeight();
-	}
 }
 
 // Start observing changes when the DOM content is loaded
 document.addEventListener("DOMContentLoaded", function () {
 	observeBodyContentChanges(onBodyContentChange);
+	console.log("DOM content loaded");
 });
-
