@@ -19,7 +19,47 @@ document.addEventListener("DOMContentLoaded", function () {
 		todayDate.textContent = new Date().toLocaleDateString("en-US", {
 			month: "long",
 			day: "numeric",
-			year: "numeric",
+			year: "numeric"
 		});
 	}
 });
+
+function loginDivHeight() {
+	const header = document.querySelector("header");
+	let loginDivHeight = window.innerHeight - header.clientHeight - 4;
+	document.getElementById("login-signup").style.height = `${loginDivHeight}px`;
+}
+
+function observeBodyContentChanges(callback) {
+	// Create a MutationObserver instance
+	const observer = new MutationObserver(function (mutationsList, observer) {
+		mutationsList.forEach(function (mutation) {
+			if (mutation.type === "childList" || mutation.type === "subtree") {
+				callback(mutation);
+			}
+		});
+	});
+
+	// Define the configuration for the observer
+	const config = {
+		childList: true, // Observe direct children
+		subtree: true, // Observe the entire subtree
+		attributes: false, // Ignore attribute changes
+		characterData: true // Observe changes to text nodes
+	};
+
+	// Start observing the body element
+	observer.observe(document.body, config);
+}
+
+function onBodyContentChange(mutation) {
+	if (window.location.pathname.includes("/login") || window.location.pathname.includes("/signup")) {
+		loginDivHeight();
+	}
+}
+
+// Start observing changes when the DOM content is loaded
+document.addEventListener("DOMContentLoaded", function () {
+	observeBodyContentChanges(onBodyContentChange);
+});
+

@@ -56,3 +56,15 @@ def logout(request):
 @login_required
 def dashboard(request, username):
     return render(request, 'dashboard/dashboard.html')
+
+# create a new post
+
+def create_post(request, username):
+    # if request.method == 'POST':
+    #     title = request.POST.get('title')
+    #     content = request.POST.get('content')
+    #     user = request.user
+    #     post = Post.objects.create(title=title, content=content, user=user)
+    #     post.save()
+    #     return redirect('/')
+    return render(request, 'dashboard/create_post.html')
