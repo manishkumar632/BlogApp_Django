@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent div {
+    padding: 10px;
+    margin: 5px;
+    background-color: lightblue;
+    border: 1px solid #000;
+    cursor: move;
+}
+
+.dragging {
+    opacity: 0.5;
+    background-color: lightgreen;
+}
+
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="child1" draggable="true">Child 1</div>
+        <div id="child2" draggable="true">Child 2</div>
+        <div id="child3" draggable="true">Child 3</div>
+    </div>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+            const parent = document.getElementById("parent");
+            let draggedElement = null;
+
+            parent.addEventListener("dragstart", function (event) {
+                draggedElement = event.target;
+                event.target.classList.add("dragging");
+            });
+
+            parent.addEventListener("dragend", function (event) {
+                event.target.classList.remove("dragging");
+                draggedElement = null;
+            });
+
+            parent.addEventListener("dragover", function (event) {
+                event.preventDefault();
+                const afterElement = getDragAfterElement(parent, event.clientY);
+                if (afterElement == null) {
+                    parent.appendChild(draggedElement);
+                } else {
+                    parent.insertBefore(draggedElement, afterElement);
+                }
+            });
+
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll("div:not(.dragging)")];
+
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+        });
+
+</script>
+</html>

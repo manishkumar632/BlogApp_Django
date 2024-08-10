@@ -2,7 +2,7 @@ let originalSidebarContent;
 
 document.addEventListener(
 	"DOMContentLoaded",
-	function() {
+	function () {
 		const sidebar = document.getElementById("createPostSidebar");
 		originalSidebarContent = sidebar.innerHTML; // Store the original HTML
 	},
@@ -14,6 +14,7 @@ function addTitleToPost() {
 	titleDiv.contentEditable = true;
 	titleDiv.style.fontSize = "2rem";
 	titleDiv.textContent = "Your Post Title";
+	titleDiv.addEventListener("focus", editText);
 	document.getElementById("post-content").appendChild(titleDiv);
 }
 
@@ -24,35 +25,27 @@ function addTextToPost() {
 	textDiv.style.fontSize = "1rem";
 	textDiv.style.textAlign = "justify";
 	textDiv.style.maxHeight = "max-content";
+	textDiv.draggable = true;
 	textDiv.textContent = "Your Post Content";
 	textDiv.addEventListener("focus", editText);
-	textDiv.addEventListener("blur", onBlur);
-
 	document.getElementById("post-content").appendChild(textDiv);
 }
 
 function editText(event) {
+	document.querySelectorAll(".active").forEach(function(element) {
+		element.classList.remove("active");
+	});
 	event.target.classList.add("active");
 	let content = document.getElementById("editText");
 	document.getElementById("createPostSidebar").innerHTML = content.innerHTML;
 }
 
-function onBlur(event) {
-	if (event.target.id === "createPostSidebar" || event.target.parentElement.id === "createPostSidebar") {
-		console.log("Blur");
-		return;
-	}
-	document.getElementById(
-		"createPostSidebar"
-	).innerHTML = originalSidebarContent;
-}
-
 function deleteActiveElement(event) {
-	document.querySelector(".active").remove;
+	const postContainer = document.getElementById("post-content");
+	postContainer.getElementsByClassName("active")[0].remove();
+	document.getElementById("createPostSidebar").innerHTML = originalSidebarContent;
 }
 
-function active() {
-	console.log("active");
-	document.getElementById("createPostSidebar").click();
-	return
+function sidebarMainOptions() {
+	document.getElementById("createPostSidebar").innerHTML = originalSidebarContent;
 }
