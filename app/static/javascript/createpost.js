@@ -1,10 +1,11 @@
 let originalSidebarContent;
-
 document.addEventListener(
 	"DOMContentLoaded",
 	function () {
-		const sidebar = document.getElementById("createPostSidebar");
-		originalSidebarContent = sidebar.innerHTML; // Store the original HTML
+		if (window.location.pathname.includes("/create-post/")) {
+			const sidebar = document.getElementById("createPostSidebar");
+			originalSidebarContent = sidebar.innerHTML; // Store the original HTML
+		}
 	},
 	{ once: true }
 );
@@ -32,7 +33,7 @@ function addTextToPost() {
 }
 
 function editText(event) {
-	document.querySelectorAll(".active").forEach(function(element) {
+	document.querySelectorAll(".active").forEach(function (element) {
 		element.classList.remove("active");
 	});
 	event.target.classList.add("active");
@@ -43,9 +44,17 @@ function editText(event) {
 function deleteActiveElement(event) {
 	const postContainer = document.getElementById("post-content");
 	postContainer.getElementsByClassName("active")[0].remove();
-	document.getElementById("createPostSidebar").innerHTML = originalSidebarContent;
+	document.getElementById("createPostSidebar").innerHTML =
+		originalSidebarContent;
 }
 
 function sidebarMainOptions() {
-	document.getElementById("createPostSidebar").innerHTML = originalSidebarContent;
+	document.getElementById("createPostSidebar").innerHTML =
+		originalSidebarContent;
+}
+
+function alignItems() {
+	const element = document.getElementsByClassName("active")[0];
+	const alignment = document.getElementById("align-content").value;
+	element.style.textAlign = alignment;
 }

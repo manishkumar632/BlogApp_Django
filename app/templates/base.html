@@ -2,23 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}My Blog{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.svg' %}" />
 </head>
 
 <body class="linux bg-[#F7F8FA] text-gray-700">
-    {% include 'includes/header.html' %}
-    {% block content %}{% endblock %}
+    {% include 'includes/header.html' %} {% block content %}{% endblock %}
     {% include 'includes/footer.html' %}
 </body>
-<script src="{% static 'javascript/script.js' %}"></script>
-<script src="{% static 'javascript/createpost.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/manishkumar632/BlogApp_Django/app/static/javascript/script.js"></script>
+<!-- <script src="{% static 'javascript/script.js' %}"></script>
+<script src="{% static 'javascript/createpost.js' %}"></script> -->
+
 </html>

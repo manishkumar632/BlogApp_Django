@@ -6,9 +6,9 @@
         <div class="flex-1 bg-[#1F1F1F] border border-slate-600 rounded-md mt-[1px]" id="post-content">
         </div>
         <div id="createPostSidebar"
-            class="w-max bg-[#1F1F1F] border border-slate-600 rounded-md mt-[1px] pl-2 pr-2">
-            <h1 onclick="addTitleToPost()" class="border p-2 rounded-md mb-2">Add Title</h1>
-            <div class="border p-2 rounded-md flex items-center" onclick="addTextToPost()">
+            class="w-max min-w-48 bg-[#1F1F1F] border border-slate-600 rounded-md mt-[1px] pl-2 pr-2">
+            <h1 onclick="addTitleToPost()" class="border p-2 rounded-md mb-2 cursor-pointer">Add Title</h1>
+            <div class="border p-2 rounded-md flex items-center cursor-pointer" onclick="addTextToPost()">
                 <i class='bx bx-text'></i>
                 <p>Add Text</p>
             </div>
@@ -21,7 +21,18 @@
             <i class='bx bx-arrow-back'></i>
             <p>Back</p>
         </div>
-        <button class="bg-red-500 pl-2 pr-2 pt-1 pb-1 rounded-lg" onclick="deleteActiveElement(event)">Delete</button>
+        <div>
+            <div class="mb-2">
+                <p class="text-center">Align</p>
+                <select name="align" id="align-content" class="bg-transparent w-full outline-none" onchange="alignItems()">
+                    <option class="bg-[#1F1F1F]" value="left">Left</option>
+                    <option class="bg-[#1F1F1F]" value="center">Center</option>
+                    <option class="bg-[#1F1F1F]" value="right">Right</option>
+                    <option class="bg-[#1F1F1F]" value="justify">Justify</option>
+                </select>
+            </div>
+            <button class="bg-red-500 pl-2 pr-2 pt-1 pb-1 rounded-lg" onclick="deleteActiveElement(event)">Delete</button>
+        </div>
     </div>
 </div>
 {% endblock %}

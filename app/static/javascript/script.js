@@ -1,4 +1,4 @@
-document.body.addEventListener("click", function (event) {
+document.body.addEventListener("click", function(event) {
 	const isUserIcon = event.target.classList.contains("bxs-user");
 	const isMenuElement = event.target.closest("#menu");
 
@@ -9,9 +9,7 @@ document.body.addEventListener("click", function (event) {
 	}
 });
 
-// call after login page loaded
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 	if (window.location.pathname.includes("/dashboard/")) {
 		document.body.querySelector("header").style.display = "none";
 		document.body.style.backgroundColor = "#F7F8FA";
@@ -26,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function loginDivHeight() {
 	const header = document.querySelector("header");
-	let loginDivHeight = window.innerHeight - header.clientHeight -1;
+	let loginDivHeight = window.innerHeight - header.clientHeight - 1;
 	if (
 		window.location.pathname.includes("/login") ||
 		window.location.pathname.includes("/signup")
@@ -41,35 +39,100 @@ function loginDivHeight() {
 		).style.height = `${loginDivHeight}px`;
 	}
 }
-
-function observeBodyContentChanges(callback) {
-	// Create a MutationObserver instance
-	const observer = new MutationObserver(function (mutationsList, observer) {
-		mutationsList.forEach(function (mutation) {
-			if (mutation.type === "childList" || mutation.type === "subtree") {
-				callback(mutation);
-			}
-		});
-	});
-
-	// Define the configuration for the observer
-	const config = {
-		childList: true, // Observe direct children
-		subtree: true, // Observe the entire subtree
-		attributes: false, // Ignore attribute changes
-		characterData: true // Observe changes to text nodes
-	};
-
-	// Start observing the body element
-	observer.observe(document.body, config);
-}
-
-function onBodyContentChange(mutation) {
-		loginDivHeight();
-}
-
-// Start observing changes when the DOM content is loaded
-document.addEventListener("DOMContentLoaded", function () {
-	observeBodyContentChanges(onBodyContentChange);
-	console.log("DOM content loaded");
+window.addEventListener("load", loginDivHeight);
+window.addEventListener("resize", loginDivHeight);
+const config = {
+	childList: true,
+	subtree: true,
+	attributes: true,
+	characterData: true
+};
+const createPostDivObserver = new MutationObserver(function(
+	createPostDivObserver
+) {
+	onChange();
 });
+window.addEventListener("load", () => {
+	if (window.location.pathname.includes("/create-post/")) {
+		let data = localStorage.getItem("post-content");
+		if (data) {
+			document.getElementById("post-content").innerHTML = data;
+			document.querySelectorAll(".titleDiv, .textDiv").forEach(div => {
+				div.addEventListener("focus", editText);
+			});
+		}
+		const node = document.getElementById("post-content");
+		createPostDivObserver.observe(node, config);
+	}
+});
+
+function onChange() {
+	let element = document.getElementById("post-content").innerHTML;
+	localStorage.setItem("post-content", element);
+}
+
+let originalSidebarContent;
+document.addEventListener(
+	"DOMContentLoaded",
+	function() {
+		if (window.location.pathname.includes("/create-post/")) {
+			const sidebar = document.getElementById("createPostSidebar");
+			originalSidebarContent = sidebar.innerHTML; // Store the original HTML
+		}
+	},
+	{ once: true }
+);
+
+function addTitleToPost() {
+	const titleDiv = document.createElement("div");
+	titleDiv.classList.add("titleDiv");
+	titleDiv.contentEditable = true;
+	titleDiv.style.fontSize = "2rem";
+	titleDiv.textContent = "Your Post Title";
+	titleDiv.addEventListener("focus", editText);
+	document.getElementById("post-content").appendChild(titleDiv);
+}
+
+function addTextToPost() {
+	const textDiv = document.createElement("div");
+	textDiv.classList.add("textDiv");
+	textDiv.contentEditable = true;
+	textDiv.style.fontSize = "1rem";
+	textDiv.style.textAlign = "justify";
+	textDiv.style.maxHeight = "max-content";
+	textDiv.draggable = true;
+	textDiv.textContent = "Your Post Content";
+	textDiv.addEventListener("focus", editText);
+	document.getElementById("post-content").appendChild(textDiv);
+}
+
+function editText(event) {
+	document.querySelectorAll(".active").forEach(function(element) {
+		element.classList.remove("active");
+	});
+	event.target.classList.add("active");
+	let content = document.getElementById("editText");
+	document.getElementById("createPostSidebar").innerHTML = content.innerHTML;
+	document.getElementById("align-content").value =
+		event.target.style.textAlign;
+}
+
+function deleteActiveElement(event) {
+	const postContainer = document.getElementById("post-content");
+	postContainer.getElementsByClassName("active")[0].remove();
+	document.getElementById(
+		"createPostSidebar"
+	).innerHTML = originalSidebarContent;
+}
+
+function sidebarMainOptions() {
+	document.getElementById(
+		"createPostSidebar"
+	).innerHTML = originalSidebarContent;
+}
+
+function alignItems() {
+	const element = document.getElementsByClassName("active")[0];
+	const alignment = document.getElementById("align-content").value;
+	element.style.textAlign = alignment;
+}

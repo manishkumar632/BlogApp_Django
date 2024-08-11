@@ -48,7 +48,7 @@
 
         {% if request.user.is_authenticated %}
         <div id="menu" class="mt-16 hidden glass absolute right-0 p-4 shadow-md rounded-md w-max">
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 text-slate-950">
                 <a href="{% url 'dashboard' username=request.user.username %}">
                     <div class="flex gap-4 items-center">
                         <h1 class="cursor-pointer transition-all duration-300">Dashboard</h1>
