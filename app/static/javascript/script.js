@@ -98,7 +98,6 @@ function addTextToPost() {
 	textDiv.classList.add("textDiv");
 	textDiv.contentEditable = true;
 	textDiv.style.fontSize = "1rem";
-	textDiv.style.textAlign = "justify";
 	textDiv.style.maxHeight = "max-content";
 	textDiv.draggable = true;
 	textDiv.textContent = "Your Post Content";
