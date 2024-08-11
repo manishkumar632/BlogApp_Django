@@ -100,6 +100,7 @@ function addTextToPost() {
 	textDiv.style.fontSize = "1rem";
 	textDiv.style.maxHeight = "max-content";
 	textDiv.draggable = true;
+	textDiv.style.textAlign = "justify";
 	textDiv.textContent = "Your Post Content";
 	textDiv.addEventListener("focus", editText);
 	document.getElementById("post-content").appendChild(textDiv);
