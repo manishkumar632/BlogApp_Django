@@ -7,7 +7,7 @@
 		"build": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/style.css",
 		"dev": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/style.css --watch",
 		"autosync": "git add . && git commit -m 'commit' && git push",
-		"watch": "nodemon -e js,html,css --exec \"npm run build && npm run autosync\""
+		"watch": "nodemon -e js,html,css --exec \"npm run build\""
 	},
 	"keywords": [],
 	"author": "",
