@@ -88,7 +88,7 @@ function addTitleToPost() {
 	titleDiv.classList.add("titleDiv");
 	titleDiv.contentEditable = true;
 	titleDiv.style.fontSize = "2rem";
-	titleDiv
+	titleDiv.style.textAlign = "left";
 	titleDiv.textContent = "Your Post Title";
 	titleDiv.addEventListener("focus", editText);
 	document.getElementById("post-content").appendChild(titleDiv);
