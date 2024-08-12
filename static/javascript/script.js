@@ -107,6 +107,30 @@ function addTextToPost() {
 	document.getElementById("post-content").appendChild(textDiv);
 }
 
+function addImageToPost() {
+	const imageDiv = document.createElement("div");
+    imageDiv.classList.add("imageDiv");
+    const imageInput = document.createElement("input");
+    imageInput.type = "file";
+    imageInput.accept = "image/*";
+    imageDiv.appendChild(imageInput);
+    imageInput.addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.src = event.target.result;
+            img.style.maxWidth = "100%";
+            img.style.maxHeight = "100%";
+            imageDiv.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+	// document.getElementById("post-content").appendChild(image);
+	document.getElementById("post-content").appendChild(imageDiv);
+}
+
+
 function editText(event) {
 	document.querySelectorAll(".active").forEach(function(element) {
 		element.classList.remove("active");
@@ -153,4 +177,29 @@ function changeColor() {
     const element = document.getElementsByClassName("active")[0];
     const color = document.getElementById("colorBox").value;
     element.style.color = color;
+}
+
+
+
+function previewImage(event) {
+	const imageInput = event.target;
+	const imagePreview = document.getElementById("imagePreview");
+
+	// Check if a file is selected
+	if (imageInput.files && imageInput.files[0]) {
+		const reader = new FileReader();
+
+		reader.onload = function(e) {
+			// Set the src of the image preview element to the uploaded file's data URL
+			imagePreview.src = e.target.result;
+			imagePreview.classList.remove("hidden"); // Show the image
+		};
+
+		// Read the file as a data URL (base64 encoded string)
+		reader.readAsDataURL(imageInput.files[0]);
+
+		// Optionally hide the icons when an image is uploaded
+		document.querySelector(".bx-image-alt").classList.add("hidden");
+		document.querySelector(".bx-plus-circle").classList.add("hidden");
+	}
 }

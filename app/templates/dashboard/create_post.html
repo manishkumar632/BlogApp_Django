@@ -4,15 +4,31 @@
 <div id="creatPostDiv" class="bg-[#212228]">
     <div class="flex ml-2 mr-2 md:ml-6 md:mr-6 m-auto text-white" id="createPost">
         <div class="flex-1 bg-[#1F1F1F] border border-slate-600 rounded-md mt-[1px]" id="post-content">
+            <!--  -->
+            <div class="w-full flex justify-center rounded-md">
+                <input type="file" id="imageUpload" accept="image/*" class="hidden" onchange="previewImage(event)">
+                <label for="imageUpload"
+                    class="relative h-32 w-32 rounded-md cursor-pointer flex items-center justify-center">
+                    <i class='bx bx-image-alt absolute text-9xl text-gray-700'></i>
+                    <i
+                        class='bx bx-plus-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl'></i>
+                    <img id="imagePreview" src="" alt="Image Preview"
+                        class="absolute inset-0 w-full h-full object-cover rounded-md hidden">
+                </label>
+            </div>
+            <!--  -->
         </div>
         <div id="createPostSidebar"
             class="w-max min-w-48 bg-[#1F1F1F] border border-slate-600 rounded-md mt-[1px] pl-2 pr-2">
-            <h1 onclick="addTitleToPost()" class="border p-2 rounded-md mb-2 cursor-pointer">Add Title</h1>
-            <div class="border p-2 rounded-md flex items-center cursor-pointer" onclick="addTextToPost()">
-                <i class='bx bx-text'></i>
+            <h1 onclick="addTitleToPost()" class="border p-2 rounded-md mb-2 cursor-pointer text-center">Add Title</h1>
+            <div class="border p-2 mb-2 rounded-md gap-4 flex items-center cursor-pointer" onclick="addTextToPost()">
+                <i class='bx bx-text text-3xl'></i>
                 <p>Add Text</p>
             </div>
-            <div class="mt-4"> </div>
+            <div class="border p-2 rounded-md flex items-center gap-4 cursor-pointer" onclick="addImageToPost()">
+                <i class='bx bx-image-add text-3xl'></i>
+                <p>Add Image</p>
+            </div>
         </div>
     </div>
 </div>
@@ -25,8 +41,8 @@
         <div>
             <div class="mb-2">
                 <p class="text-center">Align</p>
-                <select name="align" id="align-content" class="bg-transparent w-full outline-none"
-                    onchange="alignItems()">
+                <select name="align" id="align-content"
+                    class="bg-transparent w-full outline-none focus:ring-0 border-none" onchange="alignItems()">
                     <option class="bg-[#1F1F1F]" value="left">Left</option>
                     <option class="bg-[#1F1F1F]" value="center">Center</option>
                     <option class="bg-[#1F1F1F]" value="right">Right</option>
@@ -35,7 +51,7 @@
             </div>
             <div class="grid place-items-center">
                 <h1>Color</h1>
-                <input type="color" value="#2f2a6e" id="colorBox" oninput="changeColor()">
+                <input type="color" value="#ffffff" id="colorBox" oninput="changeColor()">
             </div>
             <button class="bg-red-500 pl-2 pr-2 pt-1 pb-1 rounded-lg"
                 onclick="deleteActiveElement(event)">Delete</button>
