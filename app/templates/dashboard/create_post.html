@@ -12,6 +12,7 @@
                 <i class='bx bx-text'></i>
                 <p>Add Text</p>
             </div>
+            <div class="mt-4"> </div>
         </div>
     </div>
 </div>
@@ -24,14 +25,20 @@
         <div>
             <div class="mb-2">
                 <p class="text-center">Align</p>
-                <select name="align" id="align-content" class="bg-transparent w-full outline-none" onchange="alignItems()">
+                <select name="align" id="align-content" class="bg-transparent w-full outline-none"
+                    onchange="alignItems()">
                     <option class="bg-[#1F1F1F]" value="left">Left</option>
                     <option class="bg-[#1F1F1F]" value="center">Center</option>
                     <option class="bg-[#1F1F1F]" value="right">Right</option>
                     <option class="bg-[#1F1F1F]" value="justify">Justify</option>
                 </select>
             </div>
-            <button class="bg-red-500 pl-2 pr-2 pt-1 pb-1 rounded-lg" onclick="deleteActiveElement(event)">Delete</button>
+            <div class="grid place-items-center">
+                <h1>Color</h1>
+                <input type="color" value="#2f2a6e" id="colorBox" oninput="changeColor()">
+            </div>
+            <button class="bg-red-500 pl-2 pr-2 pt-1 pb-1 rounded-lg"
+                onclick="deleteActiveElement(event)">Delete</button>
         </div>
     </div>
 </div>

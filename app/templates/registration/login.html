@@ -14,16 +14,16 @@
                     Email
                 </label>
                 <input
-                    class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="appearance-none shadow focus:ring-0 border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="username" name="email" type="text" placeholder="Email ID" value="{{ request.POST.email|default:'' }}">
             </div>
             <div>
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
                     Password
                 </label>
-                <div class="flex justify-center items-center w-max rounded bg-white">
+                <div class="flex shadow justify-center items-center w-max rounded bg-white">
                     <input
-                        class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        class="appearance-none border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0"
                         id="password" name="password" type="password" placeholder="Enter Your Password" value="{{ request.POST.password|default:'' }}">
                     <div class="text-black text-2xl flex justify-center items-center border-none mr-2"
                         onclick="toggleIcon()"><i class='bx bx-show-alt'></i></div>

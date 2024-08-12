@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Color</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+input[type="color"] {
+    background-color: transparent;
+    border: none;
+    line-height: 0px;
+}
+input{
+    border: none;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Change Text Color</h1>
+    <p id="text">This is a sample text.</p>
+
+    <label for="colorPicker">Choose a color:</label>
+    <input type="color" id="colorPicker">
+
+    <button onclick="changeTextColor()">Change Color</button>
+
+    <script>
+        function changeTextColor() {
+                const colorPicker = document.getElementById('colorPicker');
+                const text = document.getElementById('text');
+                text.style.color = colorPicker.value;
+            }
+
+    </script>
+</body>
+
+</html>

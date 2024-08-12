@@ -14,7 +14,7 @@
                     Username
                 </label>
                 <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="shadow appearance-none border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0"
                     id="username" name="username" type="text" placeholder="Username" value="{{ request.POST.username|default:'' }}">
             </div>
             <div class="mb-4">
@@ -22,16 +22,16 @@
                     Email
                 </label>
                 <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="shadow appearance-none border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0"
                     id="email" name="email" type="text" placeholder="Email ID" value="{{ request.POST.email|default:'' }}">
             </div>
             <div class="mb-6">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
                     Password
                 </label>
-                <div class="flex justify-center items-center w-max rounded bg-white">
+                <div class="flex shadow justify-center items-center w-max rounded bg-white">
                     <input
-                        class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        class="appearance-none rounded border-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0"
                         id="password" name="password" type="password" placeholder="Enter Your Password" value="{{ request.POST.password|default:'' }}">
                     <div class="text-black text-2xl flex justify-center items-center border-none mr-2"
                         onclick="toggleIcon()"><i class='bx bx-show-alt'></i></div>
@@ -43,7 +43,7 @@
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="gender">
                     Gender
                 </label>
-                <select class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="gender" name="gender">
+                <select class="border-none shadow rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0" id="gender" name="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
